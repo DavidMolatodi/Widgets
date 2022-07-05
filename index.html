@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="greet.js"></script>
+    <script src="WhichShift.js"></script>
+    <script src="enoughAirtime.js"></script>
+    <script src="totalPhoneBill.js"></script>
+    <script src="greet-widget.js"></script>
+    <script src="enoughAirtime-widget.js"></script>
+    <script src="WhichShift-widget.js"></script>
+    <script src="totalPhoneBill-widget.js"></script>
+    <script src="//unpkg.com/alpinejs" defer></script>
+
+
+    <style>
+        .message {
+            background-color: lightseagreen;
+            padding: 2em;
+            margin-bottom: 1em;
+            font-weight: bold;
+        }
+
+        .greet {
+            border-radius: 0.5em;
+            border: 3px solid;
+            padding: 1em;
+            margin: 5em;
+            background-color: seagreen;
+            width: 50em;
+        }
+
+        .usage-amount {
+            padding: 0.8em;
+            font-weight: bold;
+
+        }
+
+        .message2 {
+            background-color: lightseagreen;
+            font-weight: bold;
+            margin-bottom: 1em;
+            padding: 2em;
+        }
+
+        .Airtime {
+            margin-top: 8em;
+            border-radius: 0.5em;
+            border: 3px solid;
+            padding: 1em;
+            margin: 5em;
+            background-color: seagreen;
+            width: 50em;
+        }
+
+        .TransportFee {
+            margin-top: 8em;
+            border-radius: 0.5em;
+            border: 3px solid;
+            padding: 1em;
+            margin: 5em;
+            background-color: seagreen;
+            width: 50em;
+        }
+
+        .Shift {
+            margin: 1em;
+        }
+
+     
+
+        .CallSms {
+            padding: 0.8em;
+            font-weight: bold;
+
+        }
+
+        .PhoneBill {
+            margin-top: 8em;
+            border-radius: 0.5em;
+            border: 3px solid;
+            padding: 1em;
+            margin: 5em;
+            background-color: seagreen;
+            width: 50em;
+        }
+    </style>
+</head>
+
+<body>
+    
+    <div class="greet" x-data="greetWidget">
+
+        <h2>1. Greet widget</h2>
+        <div x-show="message.length > 0" class="message" x-text="message">
+            <h3> </h3>
+        </div>
+        <label for="name">Enter your name: </label>
+        <input type="text" x-model="name" id="name">
+        <button x-on:click="greetMe">Greet</button>
+
+    </div>
+
+    <div class="Airtime" x-data="enoughAirtimeWidget">
+        <H2>2. Enough Airtime Widget </H2>
+
+        <div class="usage-amount">
+            <label for="usage"> Enter your Airtime Usage: </label>
+            <input type="text" x-model="AirtimeUsage" id="usage">
+        </div>
+
+        <div class="usage-amount">
+            <label for="amount"> Amount Available</label>
+            <input type="text" x-model="AvailableAmount" id="amount">
+            <button x-on:click="calculate">Calculate Airtime Usage</button>
+        
+        </div>
+
+        <div x-show="AirtimeMessage.length > 0" class="message2" x-text="AirtimeMessage">
+        </div>
+
+    </div>
+
+
+    <div class="TransportFee" x-data="whichShiftWidget">
+        <h2> 3. Which Shift</h3>
+            <div class="Shift">
+                <label for="shift">Which Shift</label>
+                <input type="text" x-model="WhichShift" id="shift">
+                <button x-on:click="calculate">Calculate Trans Fee</button>
+            </div>
+
+            <div x-show="transFee.length >0 " class="message2" x-text="transFee">
+                
+            </div>
+
+    </div>
+
+
+    <div class="PhoneBill" x-data="totalPhoneBillWidget ">
+        <h2>4. Total Phone Bill</h2>
+        <div class="CallSms">
+            <label for="Calls">Total Usage </label>
+            <input type="text" x-model="CallNSms" id="Calls">
+            <button x-on:click="calculate" >Calculate Total PhoneBill</button>
+        </div>
+
+        <div x-show="TPhoneBill.length >0 " class="message2" x-text="TPhoneBill">
+           
+        </div>
+    </div>
+
+
+</body>
+</html>
